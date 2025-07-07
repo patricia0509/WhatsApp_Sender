@@ -1,0 +1,17 @@
+# 1. Masuk ke folder proyek
+cd flask_backend
+
+# 2. Install dependency Node.js
+npm init -y
+npm install express multer @whiskeysockets/baileys qrcode-terminal
+
+# 3. Install dependency Python
+pip install flask requests pyodbc
+
+# 4. Jalankan server Node.js (untuk WhatsApp)
+node index.js
+
+# 5. Jalankan server app.py (untuk aplikasinya website)
+phyton app.py
+
+# jalankan server node.js dan server app.py di terminal yang berbeda (split terminal)

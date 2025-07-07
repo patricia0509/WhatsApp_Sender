@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hasil Pengiriman</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #ffffff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            margin-top: 60px;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00796b;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 2rem;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+        }
+
+        .success-item {
+            background-color: #e0f2f1;
+            color: #004d40;
+            border-left: 5px solid #00796b;
+        }
+
+        .fail-item {
+            background-color: #ffebee;
+            color: #c62828;
+            border-left: 5px solid #e53935;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            text-decoration: none;
+            color: #00796b;
+            background-color: #e0f2f1;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        a:hover {
+            background-color: #b2dfdb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📤 Hasil Pengiriman WhatsApp</h1>
+
+        <h2>✅ Berhasil:</h2>
+        <ul>
+            {% if success %}
+                {% for nomor in success %}
+                    <li class="success-item">{{ nomor }}</li>
+                {% endfor %}
+            {% else %}
+                <li>Tidak ada pesan yang berhasil dikirim.</li>
+            {% endif %}
+        </ul>
+
+        <h2>❌ Gagal:</h2>
+        <ul>
+            {% if failed %}
+                {% for fail in failed %}
+                    <li class="fail-item">{{ fail.nomor }} - {{ fail.error }}</li>
+                {% endfor %}
+            {% else %}
+                <li>Tidak ada pesan yang gagal dikirim.</li>
+            {% endif %}
+        </ul>
+
+        <div style="text-align: center;">
+            <a href="/">← Kembali ke Beranda</a>
+        </div>
+    </div>
+</body>
+</html>

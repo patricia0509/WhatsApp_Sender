@@ -1,0 +1,82 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+<meta name="theme-color" content="#0d6efd">
+<link rel="icon" href="{{ url_for('static', filename='icons/icon-192.png') }}">
+
+    <meta charset="UTF-8">
+    <title>Kirim WhatsApp</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #ffffff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #00796b;
+            margin-bottom: 2rem;
+        }
+
+        button {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #004d40;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kirim Pesan WhatsApp</h1>
+        <!-- Ganti dari button JS ke form POST -->
+        <form action="/send-all" method="post">
+            <button type="submit">Kirim Semua Pesan dari Database</button>
+        </form>
+    </div>
+</body>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("/static/service-worker.js")
+        .then(function (reg) {
+          console.log("Service Worker registered: ", reg);
+        }).catch(function (err) {
+          console.log("Service Worker registration failed: ", err);
+        });
+    });
+  }
+</script>
+</html>
